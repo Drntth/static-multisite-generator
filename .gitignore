@@ -1,0 +1,13 @@
+# Build output and caches
+dist/
+.cache/
+
+# Python
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+
+# Local, private agent notes and settings
+CLAUDE.local.md
+.claude/settings.local.json
