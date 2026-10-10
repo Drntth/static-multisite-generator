@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% set title = "Breads | Example Bakery" %}
+{% set description = "Our daily breads: sourdough, rye, croissants and seasonal specials." %}
+{% block content %}
+    <main class="container py-5">
+      <h1>Our breads</h1>
+      <p>Every loaf is shaped by hand. Seasonal specials change each month.</p>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100">
+            <img class="card-img-top card-photo" src="/assets/img/sourdough.webp" alt="Placeholder image: a round sourdough loaf" />
+            <div class="card-body">
+              <h3 class="h5 card-title">Sourdough</h3>
+              <p class="card-text">Wheat and rye flour, 24-hour fermentation.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100">
+            <img class="card-img-top card-photo" src="/assets/img/rye.webp" alt="Placeholder image: a dark rye loaf" />
+            <div class="card-body">
+              <h3 class="h5 card-title">Rye</h3>
+              <p class="card-text">100% rye with caraway.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100">
+            <img class="card-img-top card-photo" src="/assets/img/croissant.webp" alt="Placeholder image: butter croissants on a tray" />
+            <div class="card-body">
+              <h3 class="h5 card-title">Croissant</h3>
+              <p class="card-text">Laminated dough with butter.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+{% endblock %}

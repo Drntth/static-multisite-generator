@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% set title = "Example Café | Coffee and cake in Example City" %}
+{% set description = "Example Café serves coffee, cakes from Example Bakery and live music on Fridays." %}
+{% block content %}
+    <header class="hero">
+      <img class="hero-img" src="/assets/img/hero.webp" alt="Placeholder image: cups of coffee on a café table" />
+      <div class="hero-text">
+        <div class="container">
+          <h1 class="display-5">Example Café</h1>
+          <p class="lead mb-0">Coffee, cake and a quiet corner.</p>
+        </div>
+      </div>
+    </header>
+    <main class="container py-5">
+      <h2>Today at the café</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100">
+            <img class="card-img-top card-photo" src="/assets/img/coffee.webp" alt="Placeholder image: a flat white with latte art" />
+            <div class="card-body">
+              <h3 class="h5 card-title">Coffee</h3>
+              <p class="card-text">Beans roasted in Example City.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100">
+            <img class="card-img-top card-photo" src="/assets/img/cake.webp" alt="Placeholder image: a slice of cake on a plate" />
+            <div class="card-body">
+              <h3 class="h5 card-title">Cake of the day</h3>
+              <p class="card-text">Baked by <a href="{{ link('bakery.example.com', '/') }}">Example Bakery</a>.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100">
+            <img class="card-img-top card-photo" src="/assets/img/music.webp" alt="Placeholder image: a guitarist on a small stage" />
+            <div class="card-body">
+              <h3 class="h5 card-title">Live music</h3>
+              <p class="card-text">Every Friday from 19:00.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="mt-4"><a class="btn btn-accent" href="/menu.html">See the menu</a></p>
+    </main>
+{% endblock %}

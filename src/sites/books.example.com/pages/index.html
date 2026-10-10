@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% set title = "Example Books | Independent bookshop in Example City" %}
+{% set description = "Example Books is an independent bookshop with staff picks and reading evenings." %}
+{% block content %}
+    <header class="hero">
+      <img class="hero-img" src="/assets/img/hero.webp" alt="Placeholder image: shelves of books in Example Books" />
+      <div class="hero-text">
+        <div class="container">
+          <h1 class="display-5">Example Books</h1>
+          <p class="lead mb-0">Stories for every reader.</p>
+        </div>
+      </div>
+    </header>
+    <main class="container py-5">
+      <h2>This month</h2>
+      <p>Reading evening at <a href="{{ link('cafe.example.com', '/events.html') }}">Example Café</a> on the first Monday.</p>
+      <p><a class="btn btn-accent" href="/picks/">Staff picks</a></p>
+    </main>
+{% endblock %}

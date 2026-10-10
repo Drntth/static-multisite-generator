@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+  <head>
+{% include "partials/head.html" %}
+  </head>
+  <body{% if body_class %} class="{{ body_class }}"{% endif %}>
+{% include "partials/nav.html" %}
+
+{% block content %}{% endblock %}
+
+{% include "partials/footer.html" %}
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}" defer></script>
+    <script src="{{ asset('js/main.js') }}" defer></script>
+{% block extra %}{% endblock %}
+  </body>
+</html>

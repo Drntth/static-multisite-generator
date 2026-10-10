@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% set title = "Example Bakery | Fresh bread in Example City" %}
+{% set description = "Example Bakery bakes sourdough, rye and croissants every morning in Example City." %}
+{% block content %}
+    <header class="hero">
+      <img class="hero-img" src="/assets/img/hero.webp" alt="Placeholder image: loaves on the counter of Example Bakery" />
+      <div class="hero-text">
+        <div class="container">
+          <h1 class="display-5">Example Bakery</h1>
+          <p class="lead mb-0">Fresh bread every morning since 1998.</p>
+        </div>
+      </div>
+    </header>
+    <main class="container py-5">
+      <h2>Baked today</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100">
+            <img class="card-img-top card-photo" src="/assets/img/sourdough.webp" alt="Placeholder image: a round sourdough loaf" />
+            <div class="card-body">
+              <h3 class="h5 card-title">Sourdough</h3>
+              <p class="card-text">Slow-fermented for 24 hours.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100">
+            <img class="card-img-top card-photo" src="/assets/img/rye.webp" alt="Placeholder image: a dark rye loaf" />
+            <div class="card-body">
+              <h3 class="h5 card-title">Rye</h3>
+              <p class="card-text">Dense, with caraway seeds.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100">
+            <img class="card-img-top card-photo" src="/assets/img/croissant.webp" alt="Placeholder image: butter croissants on a tray" />
+            <div class="card-body">
+              <h3 class="h5 card-title">Croissant</h3>
+              <p class="card-text">Butter croissants until noon.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="mt-4">
+        <a class="btn btn-accent" href="/breads/">All breads</a>
+        Need a coffee with it? Visit <a href="{{ link('cafe.example.com', '/') }}">Example Café</a> next door.
+      </p>
+    </main>
+{% endblock %}

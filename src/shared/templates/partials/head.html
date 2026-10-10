@@ -1,0 +1,61 @@
+{#- Shared <head>. Page variables: title, description, noindex (bool). -#}
+{%- set canonical = "https://" ~ domain ~ page_path -%}
+{%- set description = description | default(site.name ~ ", one of the Example Family shops in Example City.") -%}
+{%- set graph = [
+  {
+    "@type": site.schema_type,
+    "@id": "https://" ~ domain ~ "/#business",
+    "name": site.name,
+    "url": "https://" ~ domain ~ "/",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1 Example Street",
+      "addressLocality": "Example City",
+    },
+  },
+  {
+    "@type": "WebSite",
+    "@id": "https://" ~ domain ~ "/#website",
+    "name": site.name,
+    "url": "https://" ~ domain ~ "/",
+    "inLanguage": "en",
+    "publisher": {"@id": "https://" ~ domain ~ "/#business"},
+  },
+] -%}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description }}" />
+{% if noindex | default(false) %}
+    <meta name="robots" content="noindex" />
+{% else %}
+    <link rel="canonical" href="{{ canonical }}" />
+{% endif %}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:site_name" content="{{ site.name }}" />
+    <meta property="og:title" content="{{ title }}" />
+    <meta property="og:description" content="{{ description }}" />
+    <meta property="og:url" content="{{ canonical }}" />
+    <meta property="og:image" content="https://{{ domain }}{{ asset('img/og-image.jpg') }}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json">
+      {{ {"@context": "https://schema.org", "@graph": graph} | tojson }}
+    </script>
+
+    <link href="{{ asset('img/favicon.webp') }}" rel="icon" type="image/webp" sizes="48x48" />
+
+    <link rel="preload" href="{{ asset('fonts/inter-latin-wght-normal.woff2') }}" as="font" type="font/woff2" crossorigin />
+    <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('vendor/bootstrap-icons/bootstrap-icons.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/fonts.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet" />
+    <style>
+      :root {
+        --accent: {{ site.accent }};
+      }
+    </style>

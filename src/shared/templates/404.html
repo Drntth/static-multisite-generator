@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% set title = "Page not found | " ~ site.name %}
+{% set description = "The page you are looking for does not exist." %}
+{% set noindex = true %}
+{% block content %}
+    <main class="container py-5 text-center">
+      <h1>Page not found</h1>
+      <p>The page does not exist or has moved.</p>
+      <p><a href="/">Back to the home page</a></p>
+    </main>
+{% endblock %}

@@ -1,0 +1,54 @@
+{#- Shared navigation on every site.
+    link(domain, path): root-relative on the same domain, full https URL elsewhere.
+    current(domain, path): true for the page being rendered.
+    sites: every site in src/sites.toml (the "Our shops" menu lists them by their short label). -#}
+    <nav class="navbar navbar-expand-md border-bottom sticky-top bg-body">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="{{ link(domain, '/') }}">
+          <img src="{{ asset('img/favicon.webp') }}" alt="" width="32" height="32" />
+          <span>{{ site.name }}</span>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#main-nav"
+          aria-controls="main-nav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="main-nav">
+          <ul class="navbar-nav me-auto">
+{% for item in site.nav %}
+            <li class="nav-item">
+              <a
+                class="nav-link{% if current(domain, item.path) %} active{% endif %}"
+                href="{{ link(domain, item.path) }}"
+                {%- if current(domain, item.path) %} aria-current="page"{% endif %}
+              >{{ item.label }}</a>
+            </li>
+{% endfor %}
+          </ul>
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Our shops
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+{% for shop_domain, shop in sites.items() %}
+                <li>
+                  <a
+                    class="dropdown-item{% if shop_domain == domain %} active{% endif %}"
+                    href="{{ link(shop_domain, '/') }}"
+                    {%- if shop_domain == domain %} aria-current="page"{% endif %}
+                  >{{ shop.short }}</a>
+                </li>
+{% endfor %}
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>

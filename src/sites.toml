@@ -1,0 +1,45 @@
+# The list of sites (fictional sample data). The key is the domain and also the folder name:
+# src/sites/<domain>/ and dist/<domain>/.
+#
+# Per site:
+#   name         site name (title suffix, og:site_name, llms.txt, JSON-LD)
+#   short        short label in the shared "Our shops" menu
+#   schema_type  schema.org type of the business in JSON-LD
+#   accent       accent colour of the site (CSS variable --accent)
+#   nav          the site's own menu: [{ path, label }]
+#   redirects    old URL -> new page (301 in .htaccess)
+
+[sites."bakery.example.com"]
+name = "Example Bakery"
+short = "Bakery"
+schema_type = "Bakery"
+accent = "#9a5b2e"
+nav = [
+  { path = "/", label = "Home" },
+  { path = "/breads/", label = "Breads" },
+  { path = "/visit.html", label = "Visit" },
+]
+
+[sites."bakery.example.com".redirects]
+"/products.html" = "/breads/"
+
+[sites."cafe.example.com"]
+name = "Example Café"
+short = "Café"
+schema_type = "CafeOrCoffeeShop"
+accent = "#2f6f5e"
+nav = [
+  { path = "/", label = "Home" },
+  { path = "/menu.html", label = "Menu" },
+  { path = "/events.html", label = "Events" },
+]
+
+[sites."books.example.com"]
+name = "Example Books"
+short = "Books"
+schema_type = "BookStore"
+accent = "#3d4f8f"
+nav = [
+  { path = "/", label = "Home" },
+  { path = "/picks/", label = "Staff picks" },
+]

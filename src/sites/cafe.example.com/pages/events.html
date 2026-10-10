@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% set title = "Events | Example Café" %}
+{% set description = "Live music and reading evenings at Example Café." %}
+{% block content %}
+    <main class="container py-5">
+      <h1>Events</h1>
+      <p>Live music every Friday from 19:00. Reading evenings with
+        <a href="{{ link('books.example.com', '/picks/') }}">Example Books</a> on the first Monday of the month.</p>
+      <p><a class="btn btn-accent" href="/thanks.html">Reserve a table</a></p>
+    </main>
+{% endblock %}
