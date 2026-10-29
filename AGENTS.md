@@ -8,12 +8,12 @@ Python + Jinja2 generator for several static websites from one source, for share
 
 ## Stack
 
-Python 3.11+ (`tomllib`), Jinja2, Pillow, requests (external link check only); pytest, ruff. Front end: Bootstrap 5.3.8 and Bootstrap Icons 1.11.3, Inter and Playfair Display, all self-hosted.
+Python 3.14+, Jinja2, Pillow, requests (external link check only); pytest, ruff. Front end: Bootstrap 5.3.8 and Bootstrap Icons 1.11.3, Inter and Playfair Display, all self-hosted.
 
 ## Commands
 
 ```bash
-make venv                     # .venv with python3.12 (PYTHON=... to override, 3.11+ checked)
+make venv                     # .venv with python3.14 (PYTHON=... to override, 3.14+ checked)
 make build                    # dist/<domain>/ + dist/CHANGED.txt
 make check                    # link check, must report 0 errors
 make test                     # pytest
@@ -42,3 +42,10 @@ Done when: `make build`, `make check`, `make test` and `make lint` pass, and a s
 - Front-end libraries and fonts are self-hosted; record every addition in the folder's `LICENSES.md`.
 - After a design change, run `make preview` and commit `docs/preview.png`.
 - Sample images are generated placeholders; their `alt` starts with "Placeholder image:".
+
+## Release and docs
+
+- `tools/check.sh` runs pytest, `ruff check`, `ruff format --check`, the build and the internal link check; CI (`.github/workflows/ci.yml`) runs the same script on Python 3.14 on every push and pull request; keep it green. Run `./setup-hooks.sh` once after cloning: it enables the pre-commit secret guard (`tools/hooks/`).
+- Docs change in the same commit as the code: `README.md` and `README.hu.md` (user-facing), `CHANGELOG.md` `## [Unreleased]`.
+- Version lives only in `pyproject.toml`. A finished milestone: bump it (SemVer), move Unreleased to `## [x.y.z] - YYYY-MM-DD`, commit, then `git tag -a vX.Y.Z -m "<milestone>"` on that commit. The user pushes with `git push --follow-tags`.
+- License: MIT (`LICENSE`). Dependabot: not used.
