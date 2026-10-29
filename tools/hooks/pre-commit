@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Pre-commit secret guard. Enable with: ./setup-hooks.sh
+# Prints file names only, never the matched value.
+set -u
+
+blocked='(^|/)(\.env(\..*)?|cfg_local\.py)$|\.(asc|gpg|pgp|key|private)$|private-key|secret-key'
+files=$(git diff --cached --name-only --diff-filter=ACMR | grep -E "$blocked" | grep -v -E '(^|/)\.env\.example$')
+if [ -n "$files" ]; then
+  echo "Commit contains a secret file, aborted:"
+  echo "$files"
+  exit 1
+fi
+
+# key patterns in added lines (only file names are printed)
+pattern='-----BEGIN [A-Z ]*PRIVATE KEY-----|(^|[^A-Za-z0-9])sk-[A-Za-z0-9_-]{20,}|AKIA[0-9A-Z]{16}|(api[_-]?key|token|secret|password)[A-Za-z_]*[ ]*[:=][ ]*["'"'"'][A-Za-z0-9_/+=.-]{16,}["'"'"']'
+hits=$(git diff --cached --name-only --diff-filter=ACMR -z |
+  xargs -0 -I{} sh -c 'git diff --cached -U0 -- "$1" | grep -E "^\+[^+]" | grep -q -E -i -e "$2" && echo "$1"' _ {} "$pattern")
+if [ -n "$hits" ]; then
+  echo "Suspicious key or token in added lines (files), aborted:"
+  echo "$hits"
+  echo "If this is a false positive: git commit --no-verify"
+  exit 1
+fi
