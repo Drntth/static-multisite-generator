@@ -19,13 +19,13 @@ Kis Python- és Jinja2-alapú generátor több statikus weboldalhoz, egyetlen fo
 
 ## Követelmények
 
-- Python 3.11+ (`tomllib`)
+- Python 3.14+
 - Csak a README-előnézethez: Google Chrome (headless) és ImageMagick
 
 ## Gyors indítás
 
 ```bash
-make venv        # .venv Jinja2, Pillow, requests, pytest, ruff csomagokkal (alapértelmezés: python3.12, PYTHON=... felülírja)
+make venv        # .venv Jinja2, Pillow, requests, pytest, ruff csomagokkal (alapértelmezés: python3.14, PYTHON=... felülírja)
 make build       # dist/<domain>/ minden oldalra + dist/CHANGED.txt
 make check       # linkellenőrzés a dist/ mappán
 make serve       # helyi előnézet: oldalanként külön port, 8001-től

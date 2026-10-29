@@ -19,13 +19,13 @@ A small Python and Jinja2 generator for several static websites from one source.
 
 ## Requirements
 
-- Python 3.11+ (`tomllib`)
+- Python 3.14+
 - For the README preview only: Google Chrome (headless) and ImageMagick
 
 ## Quick start
 
 ```bash
-make venv        # .venv with Jinja2, Pillow, requests, pytest, ruff (python3.12 by default, PYTHON=... to override)
+make venv        # .venv with Jinja2, Pillow, requests, pytest, ruff (python3.14 by default, PYTHON=... to override)
 make build       # dist/<domain>/ for every site + dist/CHANGED.txt
 make check       # link check on dist/
 make serve       # local preview: one port per site, from 8001
